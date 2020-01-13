@@ -12,17 +12,17 @@ class Listcomponent extends React.Component{
             isStatus: false
         }
     }
-    componentDidMount(){       
+    componentDidMount(){
         axios.get("https://cc-mock-api.herokuapp.com/product")
             .then(res => {
                console.log(res);
                this.setState({
-                   data:res.data.list,
+                   data:res.data,
                    isStatus:true
                });
             })
             .catch(err => console.log(err))
-    }   
+    } 
     render() {
         if(!this.state.isStatus){
             return <React.Fragment>
@@ -31,7 +31,7 @@ class Listcomponent extends React.Component{
         }
         else{
             let card = this.state.data.map((product) =>
-                <Productlist list={product} key={product.id}></Productlist>
+                <Productlist list={product} key={product._id}></Productlist>
             )
             return (
                 <React.Fragment>

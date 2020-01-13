@@ -17,7 +17,7 @@ class Gridcomponent extends React.Component{
             .then(res => {
                console.log(res);
                this.setState({
-                   data:res.data.list,
+                   data:res.data,
                    isStatus:true
                });
             })
@@ -31,7 +31,7 @@ class Gridcomponent extends React.Component{
         }
         else{
             let card = this.state.data.map((product) =>
-                <Product list={product} key={product.id}></Product>
+                <Product list={product} key={product._id}></Product>
             );
             return (
                 <React.Fragment>
